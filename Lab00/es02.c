@@ -1,3 +1,7 @@
+//
+// Created by Ruggero Nocera on 03/10/2019.
+//
+
 #include <stdio.h>
 #include <ctype.h>
 int conta(char S[20], int n);
@@ -21,7 +25,7 @@ int main() {
         fscanf(fp, "%s", string);
         tot += conta(string, len);
     }
-
+    fclose(fp);
     printf("%d sottostringhe trovate", tot);
     return 0;
 }

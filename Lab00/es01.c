@@ -1,3 +1,7 @@
+//
+// Created by Ruggero Nocera on 03/10/2019.
+//
+
 #include <stdio.h>
 #define N 10
 int main() {
@@ -5,7 +9,7 @@ int main() {
     int i, j;
     int dim_max = 0;
     int dim_att = 0;
-    setbuf(stdout, NULL);
+    setbuf(stdout, NULL); //per debug, altrimenti non stampa nulla
     printf("Scrivi 10 numeri separati da spazio: ");
     for(i = 0; i < N; i++) {
         scanf("%d", &vett[i]);
