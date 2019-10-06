@@ -19,6 +19,7 @@ int main(){
     printf("Nome file: ");
     scanf("%s", fileName);
     myFile = fopen(fileName, "r");
+    if(myFile == NULL) return -1;
     fscanf(myFile, "%d %d", &nr, &nc);
     min = nr;
     if(min > nc) min = nc;
@@ -28,7 +29,7 @@ int main(){
             fscanf(myFile, "%d", &matrix[i][j]);
         }
     }
-
+    fclose(myFile);
     while(scanf("%d", &dim) == 1 && dim > 0 && dim <= min){
         printf("\n");
             for(i = 0; i < nr-dim+1; i++) {
