@@ -27,7 +27,7 @@ int main(){
     for(i = 0; i < dictDim; i++){
         fscanf(fileDict, "%s %s", substitution[i], dictionary[i]);
     }
-
+    fclose(fileDict);
     while(fgets(subRiga, MAX, fileSrc) != NULL){ //leggo riga per riga il file
         i = 0;
         while(subRiga[i] != '\0'){ //leggo carattere per carattere la riga letta
@@ -60,5 +60,7 @@ int main(){
         t = 0;
         newSubRiga[t] = '\0';
     }
+    fclose(fileSrc);
+    fclose(fileDest);
     return 0;
 }
