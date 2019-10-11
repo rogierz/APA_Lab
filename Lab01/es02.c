@@ -3,7 +3,6 @@
 //
 
 #include <stdio.h>
-#include <string.h>
 #define MAX 200
 #define S 30
 #define src "sorgente.txt"
@@ -17,7 +16,6 @@ int main(){
     fileDest = fopen(dest, "w");
     char subRiga[MAX];
     char newSubRiga[MAX];
-    char c;
     int dictDim, found, good;
     char dictionary[S][MAX];
     char substitution[S][MAX];
