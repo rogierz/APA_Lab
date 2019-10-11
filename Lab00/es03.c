@@ -30,7 +30,7 @@ int main(){
     return 0;
 }
 
-void ruota(int v[maxN], int n, int p, int dir){
+/*void ruota(int v[maxN], int n, int p, int dir){
     int i = 0, j = 0;
     int tmp_prev = 0, tmp_next = 0;
     if(dir == -1){
@@ -52,5 +52,18 @@ void ruota(int v[maxN], int n, int p, int dir){
             }
             v[0] = tmp_prev;
         }
+    }
+}*/
+
+void ruota(int v[maxN], int n, int p, int dir){
+    int tmp, i, j, cnt;
+    if(dir == -1) p = n-p; //P spostamenti a DX = N-P spostamenti a SX
+
+    for(cnt = 0, i = 0; cnt < n; i++, cnt++){
+        tmp = v[i];
+        for(j = i; ((j+p)%n) != i; j = (j+p)%n, cnt++){
+            v[j] = v[(j+p)%n];
+        }
+        v[j] = tmp;
     }
 }
