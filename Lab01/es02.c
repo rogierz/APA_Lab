@@ -40,7 +40,7 @@ int main(){
                     if(dictionary[j][k] != subRiga[i+k]) good = 0;
                     k++;
                 }
-                if(good == 1){
+                if(good == 1 && k > lenFound){
                     found = j;
                     lenFound = k;
                 }
