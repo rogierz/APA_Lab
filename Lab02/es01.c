@@ -36,7 +36,7 @@ int main(){
         for (j = 0; j < nc; j++) {
             inizio = 1;
             if (matrice[i][j] == 1) {
-                if (i > 0 && i < nr && j > 0 && j < nc) {
+                if (i > 0 && j > 0) {
                     if (matrice[i - 1][j] == 1 || matrice[i][j - 1] == 1) {
                         inizio = 0;
                     }
