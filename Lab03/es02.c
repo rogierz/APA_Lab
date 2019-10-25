@@ -7,7 +7,6 @@
 int checkBigEndian();
 void stampaCodifica(void *punt, int size, int bigEndian);
 
-
 int main(){
     float af;
     double ad;
