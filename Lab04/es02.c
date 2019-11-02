@@ -3,13 +3,16 @@
 //
 
 #include <stdio.h>
-
+#define LEN 10
 int majority(int *a, int N);
 int majorityR(int *a, int l, int r);
 
 int main(){
-    int vett[8] = {0, 1, 0, 2, 3, 4, 0, 5};
-    printf("%d", majority(vett, 8));
+    int vett[LEN];
+    int i;
+    printf("Inserisci un vettore lungo %d: ", LEN);
+    for(i = 0; i < LEN; i++) scanf("%d", &vett[i]);
+    printf("Elemento maggioritario (-1 se non esiste): %d", majority(vett, 8));
     return 0;
 }
 int majority(int *a, int N){
