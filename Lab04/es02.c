@@ -12,7 +12,7 @@ int main(){
     int i;
     printf("Inserisci un vettore lungo %d: ", LEN);
     for(i = 0; i < LEN; i++) scanf("%d", &vett[i]);
-    printf("Elemento maggioritario (-1 se non esiste): %d", majority(vett, 8));
+    printf("Elemento maggioritario (-1 se non esiste): %d", majority(vett, LEN));
     return 0;
 }
 
