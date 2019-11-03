@@ -15,9 +15,11 @@ int main(){
     printf("Elemento maggioritario (-1 se non esiste): %d", majority(vett, 8));
     return 0;
 }
+
 int majority(int *a, int N){
     return majorityR(a, 0, N-1);
 }
+
 int majorityR(int *a, int l, int r){
     int m = (r+l)/2;
     int sx, dx, i;
@@ -38,5 +40,4 @@ int majorityR(int *a, int l, int r){
     if(occSx >= occDx && occSx > (r-l+1)/2) return sx;
     if(occDx > (r-l+1)/2) return dx;
     return -1;
-
 }
