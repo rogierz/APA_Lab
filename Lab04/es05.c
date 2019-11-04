@@ -2,10 +2,6 @@
 // Created by Ruggero Nocera on 04/11/2019.
 //
 
-//
-// Created by Ruggero Nocera on 04/11/2019.
-//
-
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
