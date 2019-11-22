@@ -16,6 +16,7 @@ int main(){
     char buffer[200];
     FILE *fp;
     comandi_t cmd;
+    data d1, d2;
     while((cmd = printMenuReadCmd()) != esci){
         switch(cmd){
             case leggi_cmd:
@@ -52,24 +53,29 @@ int main(){
                 printf("Inserisci codice da cercare: ");
                 scanf("%s", buffer);
                 tmp = LISTsearch(myList, buffer);
-                if(ITEMcmp(tmp, ITEMnull()) == 0){
-                    printf("Elemento non trovato.\n");
-                }else{
-                    ITEMprint(tmp, stdout);
-                }
+                ITEMprint(tmp, stdout);
                 break;
             case cancella_codice:
-                //TODO
+                printf("Inserisci codice da eliminare: ");
+                scanf("%s", buffer);
+                tmp = LISTdeleteByCode(myList, buffer);
+                ITEMprint(tmp, stdout);
                 break;
             case cancella_date:
-                //TODO
+                printf("Inserisci date da eliminare(gg/mm/aaa):");
+                scanf("%d/%d/%d %d/%d/%d", &d1.gg, &d1.mm, &d1.aaaa, &d2.gg, &d2.mm, &d2.aaaa);
+                d1.dataToInt = d1.gg + d1.mm*31 + d1.aaaa*365;
+                d2.dataToInt = d2.gg + d2.mm*31 + d2.aaaa*365;
+                while(ITEMcmp((tmp = LISTdeleteFirstByDate(myList, d1, d2)), ITEMnull()) != 0){
+                    ITEMprint(tmp, stdout);
+                }
                 break;
             case stampa:
                 printf("Inserisci nome file: ");
                 scanf("%s", buffer);
                 fp = stdout;
                 if(strcmp(buffer, "stdout") != 0){
-                    fp = fopen(buffer, "r");
+                    fp = fopen(buffer, "w");
                     if(fp == NULL){
                         printf("Errore nell'apertura del file.\n");
                         break;
@@ -96,6 +102,7 @@ comandi_t printMenuReadCmd(){
     printf("7. Esci\n");
     printf("Inserisci numero: ");
     scanf("%d", &cmd);
+    fflush(stdin);
     if(cmd > err) return err;
     return --cmd;
 }

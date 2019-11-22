@@ -12,3 +12,5 @@ LIST LISTinit();
 void LISTsortIns(LIST l, Item val);
 void LISTprint(LIST l, FILE *fp);
 Item LISTsearch(LIST l, char *code);
+Item LISTdeleteByCode(LIST l, char *code);
+Item LISTdeleteFirstByDate(LIST l, data dataL, data dataR);
