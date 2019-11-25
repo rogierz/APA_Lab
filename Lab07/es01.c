@@ -28,13 +28,12 @@ int main(){
 void generaCollane(int *val, int len){
     int i = 0, j = 0;
     int *sol;
-    int *bestSol;
     int tmp = 0;
     for(i = 0; i < len; i++){
         tmp += val[i];
     }
     sol = malloc(tmp* sizeof(int));
-    bestSol = malloc(tmp* sizeof(int));
+
     for(i = tmp; i > 0; i--){
         if(generaCollaneR(0, val, len, sol, i)){
             for(j = 0; j < i; j++)
@@ -44,7 +43,6 @@ void generaCollane(int *val, int len){
     }
     printf("TOT: %d\nLUNGHEZZA TROVATA: %d", tmp,  j);
     free(sol);
-    free(bestSol);
 }
 
 int generaCollaneR(int pos, int *val, int len, int *sol, int k){
