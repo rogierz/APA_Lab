@@ -5,23 +5,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 typedef enum{
-    p_zaffiri, p_smeraldi, p_rubini, p_topazi, p_pietre
+    p_zaffiri, p_rubini, p_topazi, p_smeraldi, p_pietre
 } e_pietre;
 
-char* nomi[p_pietre] = {"Zaffiro", "Smeraldo", "Rubino", "Topazio"};
+char* nomi[p_pietre] = {"Z", "R", "T", "S"};
 
 void generaCollane(int *val, int len);
 int generaCollaneR(int pos, int *val, int len, int *sol, int k);
 
-int main(){
+int main(int argc, char *argv[]){
     int pietre[p_pietre];
     int i;
     setbuf(stdout, NULL);
-    for(i = 0; i < p_pietre; i++){
-        printf("Inserisci quantita\' di [%s]: ", nomi[i]);
-        scanf("%d", &pietre[i]);
+    FILE *fp = fopen(argv[1], "r");
+    int nTest;
+    fscanf(fp, "%d", &nTest);
+    for (i = 0; i < nTest; i++) {
+        fscanf(fp, "%d %d %d %d", &pietre[0], &pietre[1], &pietre[2], &pietre[3]);
+        printf("TEST #%d\n", i+1);
+        printf("z = %d, r = %d, t = %d, s = %d\n", pietre[0], pietre[1], pietre[2], pietre[3]);
+        generaCollane(pietre, p_pietre);
     }
-    generaCollane(pietre, p_pietre);
+    fclose(fp);
     return 0;
 }
 
@@ -37,11 +42,11 @@ void generaCollane(int *val, int len){
     for(i = tmp; i > 0; i--){
         if(generaCollaneR(0, val, len, sol, i)){
             for(j = 0; j < i; j++)
-                printf("%s\n", nomi[sol[j]]);
+                printf("%s", nomi[sol[j]]);
             break;
         }
     }
-    printf("TOT: %d\nLUNGHEZZA TROVATA: %d", tmp,  j);
+    printf("TOT: %d\nLUNGHEZZA TROVATA: %d\n", tmp,  j);
     free(sol);
 }
 
