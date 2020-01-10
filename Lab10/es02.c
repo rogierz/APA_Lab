@@ -73,7 +73,6 @@ void bestSolR(int pos, int diag, int **sol, int **bestSolM, float *tot, elem_t *
       if(checkSol(sol, elementi)){
             value = computeValue(sol, elementi);
             if(value > *tot){
-
                 *tot = value;
                 for(i = 0; i < NDIAG; i++){
                     for(j = 0; j < NELEM ; j++){
