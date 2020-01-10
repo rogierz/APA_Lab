@@ -6,7 +6,7 @@
 #define MAXNAME 100
 #define fileName "elementi.txt"
 #define DD 10
-#define DP 35
+#define DP 20
 #define NDIAG 3
 #define NELEM 5
 
@@ -59,7 +59,7 @@ void bestSol(elem_t *elementi, int n){
     printf("TOT = %.3f\n", tot);
     for(i = 0; i < NDIAG; i++){
         printf("DIAG #%d\n", i+1);
-        for(j = 0; j < NELEM && elementi[bestSolM[i][j]].finale == 0 && bestSolM[i][j] != -1; j++){
+        for(j = 0; j < NELEM && bestSolM[i][j] != -1; j++){
             printf("%s ", elementi[bestSolM[i][j]].nome);
         }
         printf("\n");
