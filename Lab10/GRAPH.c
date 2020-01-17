@@ -68,7 +68,7 @@ static void insertE(GRAPH G, Edge e){
     int v = e.v;
     int w = e.w;
     int wt = e.wt;
-    if(G->madj[v][w] != 0) G->E++;
+    if(G->madj[v][w] == 0) G->E++;
     G->madj[v][w] = wt;
     G->madj[w][v] = wt;
 }
