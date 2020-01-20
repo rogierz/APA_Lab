@@ -148,6 +148,11 @@ static void TSdfsR(GRAPH G, int v, int w, int *pre, int *ts, int *time){
     }
     ts[(*time)++] = w;
 }
+
+static int parent(int *id, int i){
+    if(id[i] == i) return i;
+    return parent(id, id[i]);
+}
 void DAGmaxPath(GRAPH G, int id){
     int *pre = malloc(sizeof(int)*G->V);
     int *ts = malloc(sizeof(int)*G->V);
@@ -162,12 +167,14 @@ void DAGmaxPath(GRAPH G, int id){
             TSdfsR(G, i, i, pre, ts, &time);
 
     int *d = malloc(sizeof(int)*G->V);
+    int *st = malloc(sizeof(int)*G->V);
     for(i = 0; i < G->V; i++){
         d[i] = 0;
+        st[i] = -1;
     }
-    for(i = 0; i < time; i++){
+    for(i = time-1; i >= 0; i--){
         for(int v = 0; v < G->V; v++){
-            if(G->madj[ts[i]][v] != -1){
+            if(G->madj[ts[i]][v] != -1 && parent(pre, v) == id && parent(pre, ts[i]) == id){
                 if(d[ts[i]] + G->madj[ts[i]][v] > d[v]){
                     d[v] = d[ts[i]] + G->madj[ts[i]][v];
                 }
@@ -175,10 +182,12 @@ void DAGmaxPath(GRAPH G, int id){
         }
     }
     printf("Partendo dal nodo %s: (i nodi irraggiungibili non vengono mostrati)\n", STsearchByIndex(G->st, id));
-    for(i = 0; i < G->V; i++){
-        if(i != id && d[i] != 0)
-            printf("\t%s %d\n", STsearchByIndex(G->st, i), d[i]);
+   for(i = 0; i < time; i++){
+       if(d[ts[i]] != 0)
+           printf("\t%s %d\n", STsearchByIndex(G->st, ts[i]), d[ts[i]]);
     }
+
+    free(st);
     free(ts);
     free(pre);
 }

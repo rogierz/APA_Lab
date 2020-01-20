@@ -47,7 +47,7 @@ void generaR(int pos, int start, EDGE *edges, int E, int *sol, int card, int *be
         for(i = 0; i < card; i++){
             EDGEstore(G, edges[sol[i]], stdout);
             GRAPHremoveE(G, edges[sol[i]]);
-        } printf("\n");
+        }
         if(!GRAPHdfsSearchCycle(G)){
             *search = 0;
             for (i = 0; i < card; i++)
