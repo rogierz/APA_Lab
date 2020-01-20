@@ -180,7 +180,7 @@ void DAGmaxPath(GRAPH G, int id){
         }
     }
     printf("Partendo dal nodo %s: (i nodi irraggiungibili non vengono mostrati)\n", STsearchByIndex(G->st, id));
-   for(i = 0; i < time; i++){
+   for(i = time-1; i >= 0; i--){
        if(d[ts[i]] != 0)
            printf("\t%s %d\n", STsearchByIndex(G->st, ts[i]), d[ts[i]]);
     }
