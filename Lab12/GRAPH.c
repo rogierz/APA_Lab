@@ -167,10 +167,8 @@ void DAGmaxPath(GRAPH G, int id){
             TSdfsR(G, i, i, pre, ts, &time);
 
     int *d = malloc(sizeof(int)*G->V);
-    int *st = malloc(sizeof(int)*G->V);
     for(i = 0; i < G->V; i++){
         d[i] = 0;
-        st[i] = -1;
     }
     for(i = time-1; i >= 0; i--){
         for(int v = 0; v < G->V; v++){
@@ -186,8 +184,6 @@ void DAGmaxPath(GRAPH G, int id){
        if(d[ts[i]] != 0)
            printf("\t%s %d\n", STsearchByIndex(G->st, ts[i]), d[ts[i]]);
     }
-
-    free(st);
     free(ts);
     free(pre);
 }
